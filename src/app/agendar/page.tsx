@@ -3,6 +3,7 @@ import type { Service } from "@/lib/types";
 import BookingWizard from "@/components/booking/BookingWizard";
 import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
+import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 
 export default async function AgendarPage() {
   const supabase = getSupabaseAdmin();
@@ -36,6 +37,7 @@ export default async function AgendarPage() {
         </section>
       </main>
       <Footer />
+      <WhatsAppFloatingButton phone={process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? ""} />
     </>
   );
 }

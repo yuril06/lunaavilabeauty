@@ -1,4 +1,7 @@
+import { buildWhatsAppLink } from "@/lib/format";
+
 export default function Footer() {
+  const whatsapp = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "";
   return (
     <footer className="bg-charcoal text-cream">
       <div className="max-w-6xl mx-auto px-6 py-14 grid gap-10 sm:grid-cols-3">
@@ -23,6 +26,18 @@ export default function Footer() {
                 @lunaavilabeauty
               </a>
             </li>
+            {whatsapp && (
+              <li>
+                <a
+                  href={buildWhatsAppLink(whatsapp, "Olá! Gostaria de tirar uma dúvida / agendar um horário.")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-cream transition-colors"
+                >
+                  Fale no WhatsApp
+                </a>
+              </li>
+            )}
             <li>Diadema · Campanário, SP</li>
           </ul>
         </div>

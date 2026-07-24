@@ -6,6 +6,7 @@ import About from "@/components/About";
 import ServicesTable from "@/components/ServicesTable";
 import LocationMap from "@/components/LocationMap";
 import Footer from "@/components/Footer";
+import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 
 export default async function Home() {
   const supabase = getSupabaseAdmin();
@@ -27,6 +28,7 @@ export default async function Home() {
         <LocationMap />
       </main>
       <Footer />
+      <WhatsAppFloatingButton phone={process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? ""} />
     </>
   );
 }

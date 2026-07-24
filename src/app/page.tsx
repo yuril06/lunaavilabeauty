@@ -8,6 +8,8 @@ import LocationMap from "@/components/LocationMap";
 import Footer from "@/components/Footer";
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const supabase = getSupabaseAdmin();
   const { data } = await supabase

@@ -5,6 +5,8 @@ import Footer from "@/components/Footer";
 import Nav from "@/components/Nav";
 import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
 
+export const dynamic = "force-dynamic";
+
 export default async function AgendarPage() {
   const supabase = getSupabaseAdmin();
   const { data } = await supabase

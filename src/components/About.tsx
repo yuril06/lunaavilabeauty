@@ -17,7 +17,7 @@ export default function About() {
           </p>
           <p className="text-charcoal-soft text-lg leading-relaxed">
             Cada atendimento é pensado para realçar a beleza natural da cliente, em um
-            ambiente acolhedor no Campanário, Diadema.
+            ambiente acolhedor e reservado.
           </p>
         </div>
       </div>

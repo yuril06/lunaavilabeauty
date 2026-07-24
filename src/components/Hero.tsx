@@ -6,9 +6,6 @@ export default function Hero() {
     <section className="relative bg-cream overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28 grid md:grid-cols-2 gap-14 items-center">
         <div>
-          <p className="tracking-label text-[11px] uppercase text-clay mb-5">
-            Diadema · Campanário
-          </p>
           <h1 className="font-display text-5xl md:text-6xl leading-[1.08] text-charcoal mb-6">
             Sobrancelhas &amp;
             <br />

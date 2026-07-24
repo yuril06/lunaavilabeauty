@@ -10,7 +10,7 @@ export default function Footer() {
             Luna Avila <span className="text-gold italic">Beauty</span>
           </p>
           <p className="text-cream/60 text-sm leading-relaxed">
-            Design de sobrancelhas e extensão de cílios em Diadema, Campanário.
+            Design de sobrancelhas e extensão de cílios personalizados.
           </p>
         </div>
         <div>
@@ -38,7 +38,6 @@ export default function Footer() {
                 </a>
               </li>
             )}
-            <li>Diadema · Campanário, SP</li>
           </ul>
         </div>
         <div>

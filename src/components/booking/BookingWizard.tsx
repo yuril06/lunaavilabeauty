@@ -4,6 +4,7 @@ import { useMemo, useState, useTransition } from "react";
 import type { Service, TimeSlot } from "@/lib/types";
 import { formatDateLong, formatPrice, formatTime, buildWhatsAppLink } from "@/lib/format";
 import { createAppointmentAction, getAvailableSlotsAction } from "@/app/agendar/actions";
+import Calendar from "./Calendar";
 
 type Step = "service" | "date" | "time" | "info" | "done";
 
@@ -88,20 +89,29 @@ export default function BookingWizard({
   return (
     <div>
       {step !== "done" && (
-        <div className="flex items-center justify-center gap-2 mb-12">
+        <div className="flex items-center justify-center gap-2 sm:gap-3 mb-12">
           {STEPS.map((s, i) => (
-            <div key={s.key} className="flex items-center gap-2">
-              <div
-                className={`w-7 h-7 rounded-full flex items-center justify-center text-xs border ${
-                  i <= stepIndex
-                    ? "bg-clay text-cream border-clay"
-                    : "border-line text-charcoal-soft"
-                }`}
-              >
-                {i + 1}
+            <div key={s.key} className="flex items-center gap-2 sm:gap-3">
+              <div className="flex flex-col items-center gap-1.5">
+                <div
+                  className={`w-8 h-8 rounded-full flex items-center justify-center text-sm border transition-colors ${
+                    i <= stepIndex
+                      ? "bg-clay text-cream border-clay"
+                      : "border-line text-charcoal-soft"
+                  }`}
+                >
+                  {i + 1}
+                </div>
+                <span
+                  className={`hidden sm:block text-[10px] tracking-label uppercase ${
+                    i <= stepIndex ? "text-clay" : "text-charcoal-soft/60"
+                  }`}
+                >
+                  {s.label}
+                </span>
               </div>
               {i < STEPS.length - 1 && (
-                <div className={`w-8 h-px ${i < stepIndex ? "bg-clay" : "bg-line"}`} />
+                <div className={`w-8 sm:w-12 h-px mb-5 ${i < stepIndex ? "bg-clay" : "bg-line"}`} />
               )}
             </div>
           ))}
@@ -117,7 +127,7 @@ export default function BookingWizard({
                 setService(s);
                 setStep("date");
               }}
-              className="text-left bg-white border border-line rounded-sm p-5 hover:border-clay transition-colors"
+              className="text-left bg-cream border border-line rounded-sm p-5 hover:border-clay transition-colors"
             >
               <p className="font-display text-xl text-charcoal mb-1">{s.name}</p>
               <p className="text-charcoal-soft text-sm mb-3">{s.duration_minutes} minutos</p>
@@ -128,17 +138,15 @@ export default function BookingWizard({
       )}
 
       {step === "date" && service && (
-        <div className="max-w-sm mx-auto text-center">
+        <div className="max-w-md mx-auto text-center">
           <p className="text-charcoal-soft text-sm mb-6">
             Serviço selecionado: <span className="text-charcoal">{service.name}</span>
           </p>
-          <input
-            type="date"
-            min={todayISO()}
-            max={maxDateISO()}
+          <Calendar
             value={date}
-            onChange={(e) => handlePickDate(e.target.value)}
-            className="w-full border border-line rounded-sm px-4 py-3 text-center"
+            minISO={todayISO()}
+            maxISO={maxDateISO()}
+            onChange={handlePickDate}
           />
           <BackLink onClick={() => setStep("service")} />
         </div>
@@ -179,7 +187,7 @@ export default function BookingWizard({
 
       {step === "info" && service && slot && (
         <div className="max-w-sm mx-auto">
-          <div className="bg-white border border-line rounded-sm p-5 mb-6 text-sm space-y-1">
+          <div className="bg-cream border border-line rounded-sm p-5 mb-6 text-sm space-y-1">
             <p>
               <span className="text-charcoal-soft">Serviço: </span>
               {service.name}
